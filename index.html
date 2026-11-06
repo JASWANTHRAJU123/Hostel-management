@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="logo">HMS</div>
+                <h2>Hostel Manager</h2>
+            </div>
+            <nav class="nav-menu">
+                <button class="nav-btn active" data-tab="dashboard">📊 Dashboard</button>
+                <button class="nav-btn" data-tab="students">🎓 Students</button>
+                <button class="nav-btn" data-tab="rooms">🔑 Rooms</button>
+                <button class="nav-btn" data-tab="fees">💳 Fee Payments</button>
+                <button class="nav-btn" data-tab="complaints">📝 Complaints</button>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-bar">
+                <h1 id="page-title">Dashboard Overview</h1>
+                <div class="user-profile">
+                    <span>Admin Workspace</span>
+                </div>
+            </header>
+
+            <!-- Dashboard View -->
+            <section id="dashboard" class="tab-content active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Occupants</h3>
+                        <p id="stat-students" class="stat-value">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Rooms</h3>
+                        <p id="stat-rooms" class="stat-value">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Occupancy Rate</h3>
+                        <p id="stat-occupancy" class="stat-value">0%</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Pending Complaints</h3>
+                        <p id="stat-complaints" class="stat-value">0</p>
+                    </div>
+                </div>
+
+                <div class="recent-section">
+                    <h2>Quick Actions</h2>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" onclick="openStudentModal()">+ Register Student</button>
+                        <button class="btn btn-secondary" onclick="switchTab('complaints')">View Complaints</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Students View -->
+            <section id="students" class="tab-content">
+                <div class="section-header">
+                    <h2>Student Records</h2>
+                    <button class="btn btn-primary" onclick="openStudentModal()">+ Add Student</button>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Room No</th>
+                            <th>Contact</th>
+                            <th>Fee Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-list"></tbody>
+                </table>
+            </section>
+
+            <!-- Rooms View -->
+            <section id="rooms" class="tab-content">
+                <div class="section-header">
+                    <h2>Room Allocations</h2>
+                    <button class="btn btn-primary" onclick="openRoomModal()">+ Add Room</button>
+                </div>
+                <div class="rooms-grid" id="rooms-container"></div>
+            </section>
+
+            <!-- Fee Payments View -->
+            <section id="fees" class="tab-content">
+                <div class="section-header">
+                    <h2>Fee Status & History</h2>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Student ID</th>
+                            <th>Name</th>
+                            <th>Room</th>
+                            <th>Amount Due</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="fee-list"></tbody>
+                </table>
+            </section>
+
+            <!-- Complaints View -->
+            <section id="complaints" class="tab-content">
+                <div class="section-header">
+                    <h2>Maintenance & Issues</h2>
+                    <button class="btn btn-primary" onclick="openComplaintModal()">+ Lodge Complaint</button>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Room</th>
+                            <th>Issue Description</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="complaint-list"></tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div class="modal-card" id="modal-body"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
